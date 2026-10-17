@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FREE2FLY 프리투플라이 — 춘천에서, 하늘에서.</title>
+<meta name="description" content="춘천의 컨텐츠제작소 프리투플라이. 기업·브랜드 필름, 행사 스케치, 공공기관 기록, 웨딩, 매장 숏폼, 숙소 홍보 영상을 하늘과 땅에서 담습니다.">
+<meta name="theme-color" content="#07111f">
+<meta property="og:title" content="FREE2FLY — 춘천에서, 하늘에서.">
+<meta property="og:description" content="기업·행사·공공기관·웨딩·숙소 영상, 컨텐츠제작소 프리투플라이">
+<meta property="og:image" content="media/hero.jpg">
+<script>document.documentElement.classList.add('js');if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2732%27 fill=%27%2332bbff%27/%3E%3Ctext x=%2732%27 y=%2745%27 font-family=%27Arial Rounded MT Bold,Arial%27 font-weight=%27700%27 font-size=%2740%27 text-anchor=%27middle%27 fill=%27none%27 stroke=%27%2307111f%27 stroke-width=%273%27%3E2%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="media/hero.jpg">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hd" id="hd">
+  <a href="#top" class="logo hd__logo" aria-label="FREE2FLY 처음으로"><span>FREE</span><span class="logo__2">2</span><span>FLY</span></a>
+  <nav class="hd__nav" aria-label="주요 메뉴">
+    <a href="#works">작품</a>
+    <a href="#about">소개</a>
+    <a href="#contact">문의</a>
+  </nav>
+  <div class="hd__right">
+    <a class="kakao-btn" href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener" aria-label="카카오톡 상담">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5C6.75 3.5 2.5 6.86 2.5 11c0 2.68 1.78 5.03 4.46 6.36l-.9 3.32c-.08.3.26.54.52.37l3.94-2.6c.48.05.97.08 1.48.08 5.25 0 9.5-3.36 9.5-7.53S17.25 3.5 12 3.5Z"/></svg>
+      <span>카카오톡 상담</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mnav"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <nav aria-label="모바일 메뉴">
+    <a href="#works"><em>01</em>작품</a>
+    <a href="#about"><em>02</em>소개</a>
+    <a href="#contact"><em>03</em>문의</a>
+  </nav>
+  <div class="mnav__foot">
+    <a href="tel:010-9243-5425">010-9243-5425</a>
+    <a href="mailto:free2fly.team@gmail.com">free2fly.team@gmail.com</a>
+    <a href="https://www.instagram.com/free2fly_official" target="_blank" rel="noopener">Instagram @free2fly_official</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ 01 TAKE-OFF ============ -->
+<section class="takeoff" id="takeoff" aria-label="인트로">
+  <div class="takeoff__stick">
+    <div class="takeoff__media">
+      <video id="heroVideo" src="media/hero.mp4" poster="media/hero.jpg" muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
+    </div>
+    <div class="takeoff__grade"></div>
+    <div class="takeoff__sky"></div>
+    <canvas class="takeoff__fog" id="fog" aria-hidden="true"></canvas>
+    <div class="takeoff__fogfallback" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="takeoff__mark" id="heroMark">
+      <h1 class="takeoff__word" aria-label="FREE2FLY"><span>F</span><span>R</span><span>E</span><span>E</span><span class="o">2</span><span>F</span><span>L</span><span>Y</span></h1>
+    </div>
+    <div class="takeoff__ui">
+      <p class="takeoff__eyebrow"><span>컨텐츠제작소</span><i></i><span>CHUNCHEON, KOREA</span></p>
+      <div class="takeoff__cue" aria-hidden="true"><span>스크롤해서 이륙하기</span><i></i></div>
+      <div class="takeoff__end">
+        <p class="takeoff__line">춘천에서,<br>하늘에서.</p>
+        <p class="takeoff__credit"><b>●</b>강릉 ‘더 강문’ 인트로 中 · 드론 촬영</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 VIEWFINDER ============ -->
+<section class="flight" id="flight" aria-label="드론 시점">
+  <div class="flight__stick">
+    <p class="flight__giant flight__giant--a" aria-hidden="true">더 높이,</p>
+    <p class="flight__giant flight__giant--b" aria-hidden="true">더 넓게.</p>
+    <div class="flight__frame">
+      <video id="vfVideo" src="media/drone.mp4" poster="media/drone.jpg" muted playsinline autoplay loop preload="metadata" aria-hidden="true"></video>
+      <div class="flight__scrim"></div>
+    </div>
+    <div class="hud" id="hud" aria-hidden="true">
+      <i class="hud__c hud__c--tl"></i><i class="hud__c hud__c--tr"></i><i class="hud__c hud__c--bl"></i><i class="hud__c hud__c--br"></i>
+      <div class="hud__tl"><span class="hud__rec"><b></b>REC</span><span id="tc">00:00:00:00</span></div>
+      <div class="hud__heading"><div class="hud__tape" id="tape"></div><b></b></div>
+      <div class="hud__tr"><span>4K · 24FPS</span><span class="hud__bat"><i><b></b></i>87%</span></div>
+      <div class="hud__cross"></div>
+      <div class="hud__bl"><small>ALT</small><strong id="alt">0</strong><small>m</small><span class="hud__altbar"><b id="altbar"></b></span></div>
+      <div class="hud__br"><span>37.88°N 127.73°E</span><span>ISO 100 · 1/50</span></div>
+    </div>
+    <div class="flight__copy" id="flightCopy">
+      <p class="eyebrow eyebrow--light">WE FLY TO FILM</p>
+      <h2 class="flight__title">우리는<br>날아서 담습니다</h2>
+      <p class="flight__lead">기업·브랜드 필름, 행사와 대회 스케치, 공공기관 기록, 웨딩, 숙소 홍보까지. 지상에서는 다 담기지 않는 현장의 크기와 공기를 하늘에서 한 장면으로 보여드립니다.</p>
+      <div class="flight__chips" id="flightChips"></div>
+      <p class="flight__credit"><b>●</b>대한요트협회 공식 홈페이지 인트로 中</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 WORKS ============ -->
+<section class="works" id="works" data-theme="light" aria-labelledby="worksTitle">
+  <div class="wrap works__head">
+    <div>
+      <p class="eyebrow" data-reveal>SELECTED WORKS</p>
+      <h2 class="works__title" id="worksTitle" data-reveal>하늘과 땅에서<br>담아온 <span id="worksTotal">69편</span></h2>
+    </div>
+    <div class="view-toggle" id="viewToggle" role="group" aria-label="보기 방식">
+      <span class="view-toggle__pill" aria-hidden="true"></span>
+      <button type="button" class="is-on" data-view="grid" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>그리드</button>
+      <button type="button" data-view="list" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="2" width="14" height="2.4" rx="1.2"/><rect x="1" y="6.8" width="14" height="2.4" rx="1.2"/><rect x="1" y="11.6" width="14" height="2.4" rx="1.2"/></svg>리스트</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs">
+    <div class="wrap tabs__in" id="tabsIn" role="tablist" aria-label="분야"></div>
+  </div>
+  <div class="wrap">
+    <div class="grid" id="grid" data-view="grid" role="tabpanel" aria-live="polite"></div>
+    <div class="works__more" id="more" hidden><button type="button" class="btn-more" id="moreBtn">더 보기 <span id="moreN"></span></button></div>
+  </div>
+  <div class="list-peek" id="peek" aria-hidden="true"><img alt=""></div>
+</section>
+
+<!-- ============ 04 ABOUT ============ -->
+<section class="about" id="about" data-theme="light" aria-labelledby="aboutTitle">
+  <div class="about__sky" aria-hidden="true"></div>
+  <div class="wrap about__grid">
+    <div>
+      <p class="eyebrow" data-reveal>ABOUT FREE2FLY</p>
+      <h2 class="about__title" id="aboutTitle" data-reveal>안개의 도시,<br>춘천에서<br>시작했습니다.</h2>
+      <div class="about__body" data-reveal>
+        <p>프리투플라이는 춘천의 영상 컨텐츠제작소입니다. 기업·브랜드 필름과 제품 광고, 피트니스·요트 대회와 학술 행사 스케치, 공공기관 기록, 웨딩, 매장 숏폼과 숙소 홍보 영상까지 만들어 왔습니다.</p>
+        <p>드론으로 공간 전체를 한 번에 보여주고, 현장에서는 사람의 표정을 가까이 담습니다. 무엇을 보여줄지 함께 정하고, 촬영하고, 끝까지 다듬습니다. 처음 영상을 만드시는 분도 편하게 시작하실 수 있도록요.</p>
+      </div>
+      <dl class="facts" data-reveal>
+        <div><dt id="factWorks">69<small>편</small></dt><dd>공개된 작업</dd></div>
+        <div><dt>8<small>개 분야</small></dt><dd>기업부터 웨딩까지</dd></div>
+        <div><dt class="facts__route">춘천 <i>→</i> 강릉 · 경주 · 인천 · 대전</dt><dd>현장이 있는 곳이라면 어디든</dd></div>
+      </dl>
+    </div>
+    <div class="about__reel" id="reel">
+      <figure class="reel reel--1" data-speed="-0.06"><video data-src="media/prev/Dzv8-kgZCpo.mp4" poster="media/thumbs/Dzv8-kgZCpo.jpg" muted playsinline autoplay loop preload="none" aria-hidden="true"></video><figcaption>공주 ‘녹수원 글램핑’</figcaption></figure>
+      <figure class="reel reel--2" data-speed="0.08"><video data-src="media/prev/t-TAO3vrIRM.mp4" poster="media/thumbs/t-TAO3vrIRM.jpg" muted playsinline autoplay loop preload="none" aria-hidden="true"></video><figcaption>춘천 풀빌라 ‘스테이문’</figcaption></figure>
+      <figure class="reel reel--3" data-speed="-0.12"><video data-src="media/prev/VIzxJvoWrHY.mp4" poster="media/thumbs/VIzxJvoWrHY.jpg" muted playsinline autoplay loop preload="none" aria-hidden="true"></video><figcaption>춘천남부노인복지관 ‘먼 훗날’</figcaption></figure>
+    </div>
+  </div>
+  <div class="clients" aria-label="함께한 곳">
+    <p class="wrap clients__label">함께한 곳</p>
+    <div class="marquee"><div class="marquee__track" id="mq1"></div></div>
+    <div class="marquee marquee--rev"><div class="marquee__track" id="mq2"></div></div>
+  </div>
+</section>
+
+<!-- ============ 05 CONTACT ============ -->
+<section class="contact" id="contact" aria-labelledby="contactTitle">
+  <div class="contact__stars" aria-hidden="true"></div>
+  <div class="wrap contact__grid">
+    <div>
+      <p class="eyebrow eyebrow--light" data-reveal>LET'S FLY</p>
+      <h2 class="contact__title" id="contactTitle" data-reveal>어떤 장면을<br>날려볼까요?</h2>
+      <p class="contact__lead" data-reveal>네 가지만 골라주세요. 1분이면 충분합니다.<br>남겨주신 내용을 보고 직접 연락드릴게요.</p>
+      <ul class="contact__direct" data-reveal>
+        <li><span>TEL</span><a href="tel:010-9243-5425">010-9243-5425</a></li>
+        <li><span>MAIL</span><a href="mailto:free2fly.team@gmail.com">free2fly.team@gmail.com</a></li>
+        <li><span>TALK</span><a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener">카카오톡 채널로 상담하기 ↗</a></li>
+      </ul>
+    </div>
+    <div class="chat" id="chat" data-reveal>
+      <div class="chat__top">
+        <div class="chat__who"><span class="chat__avatar" aria-hidden="true">2</span><div><b>프리투플라이</b><small><i></i>직접 읽고 답장드려요</small></div></div>
+        <p class="chat__step" aria-live="polite"><span id="stepNow">1</span> / 4</p>
+      </div>
+      <div class="chat__bar" aria-hidden="true"><i id="bar"></i></div>
+      <div class="chat__log" id="log" aria-live="polite"></div>
+      <div class="chat__input" id="chatInput"></div>
+    </div>
+  </div>
+  <div class="plane-stage" id="planeStage" aria-hidden="true"></div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ft">
+  <div class="wrap">
+    <a href="#top" class="ft__mark" aria-label="FREE2FLY 맨 위로"><span>FREE</span><span class="logo__2">2</span><span>FLY</span></a>
+    <div class="ft__grid">
+      <div><span>STUDIO</span><p>강원도 춘천시 칠전동 9-6, 1층</p></div>
+      <div><span>TEL</span><p><a href="tel:010-9243-5425">010-9243-5425</a></p></div>
+      <div><span>MAIL</span><p><a href="mailto:free2fly.team@gmail.com">free2fly.team@gmail.com</a></p></div>
+      <div><span>FOLLOW</span><p><a href="https://www.instagram.com/free2fly_official" target="_blank" rel="noopener">Instagram ↗</a> · <a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener">KakaoTalk ↗</a></p></div>
+    </div>
+    <div class="ft__bottom"><p>© 2026 FREE2FLY · 컨텐츠제작소 프리투플라이</p><a class="ft__top" href="#top">맨 위로 ↑</a></div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+  <div class="lb__bg" data-close></div>
+  <div class="lb__box">
+    <div class="lb__player" id="lbPlayer"></div>
+    <div class="lb__meta">
+      <div><p class="lb__cat" id="lbCat"></p><h3 id="lbTitle"></h3><p class="lb__client" id="lbClient"></p></div>
+      <a class="lb__yt" id="lbYt" href="#" target="_blank" rel="noopener">YouTube에서 보기 ↗</a>
+    </div>
+  </div>
+  <button class="lb__x" type="button" data-close aria-label="닫기"><i></i><i></i></button>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"><span>PLAY</span></div>
+
+<script src="js/works.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

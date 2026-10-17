@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FREE2FLY 프리투플라이 — 컨텐츠제작소 · 춘천 영상제작</title>
+<meta name="description" content="춘천 컨텐츠제작소 프리투플라이. 기업·브랜드 필름, 행사 스케치, 기관 홍보, 웨딩, 숙소 인트로까지 70여 편의 영상을 만들었습니다.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='40' text-anchor='middle' fill='none' stroke='%23f2f1ec' stroke-width='3'%3E2%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__top"><span>컨텐츠제작소</span><span>Chuncheon, KR</span></div>
+  <div class="loader__mark wm"><span>FREE</span><span class="o">2</span><span>FLY</span></div>
+  <div class="loader__bottom">
+    <div class="loader__count"><span id="loaderNum">000</span></div>
+    <div class="loader__meta">Showreel<br>Loading</div>
+  </div>
+  <div class="loader__line"><i id="loaderLine"></i></div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav__logo wm" href="#top" aria-label="FREE2FLY 처음으로"><span>FREE</span><span class="o">2</span><span>FLY</span></a>
+  <nav class="nav__links" aria-label="주요 메뉴">
+    <a href="#works">Works</a><a href="#fields">분야</a><a href="#clients">Clients</a><a href="#all">Archive</a>
+  </nav>
+  <a class="nav__cta" href="#contact"><i class="dot"></i>프로젝트 문의</a>
+  <button class="nav__burger" id="burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="모바일 메뉴">
+    <a href="#works"><em>01</em>Works</a>
+    <a href="#fields"><em>02</em>분야</a>
+    <a href="#clients"><em>03</em>Clients</a>
+    <a href="#all"><em>04</em>전체 작업</a>
+    <a href="#contact"><em>05</em>문의하기</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="tel:01092435425">010-9243-5425</a>
+    <a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener">카카오톡 상담 ↗</a>
+  </div>
+</div>
+
+<main id="top">
+<!-- SHOWREEL -->
+<section class="reel" id="reel" aria-label="쇼릴">
+  <video class="reel__video" id="reelVideo" muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
+  <div class="reel__shade"></div>
+  <div class="reel__side reel__side--l"><span>춘천 컨텐츠제작소</span><span>37.88°N 127.73°E</span></div>
+  <div class="reel__side reel__side--r"><span>Brand · Event · Public</span><span>Wedding · Stay · SNS</span></div>
+  <div class="reel__foot">
+    <div class="reel__row">
+      <div class="reel__cap" aria-live="polite">
+        <p class="reel__kicker"><span id="reelIdx">01</span><span class="sl">/</span><span id="reelTotal">06</span><i></i>Showreel</p>
+        <p class="reel__title" id="reelTitle"><span>2024 코리아 세일링 챔피언십</span></p>
+        <p class="reel__sub" id="reelSub"><span>대한요트협회 · 기관·관공서·협회</span></p>
+      </div>
+      <div class="reel__bars" id="reelBars" aria-hidden="true"></div>
+      <button class="reel__play" id="reelPlayBtn" type="button" aria-label="지금 장면의 원본 영상 보기">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" class="trk"/><circle cx="50" cy="50" r="47" class="prg" id="playRingM"/></svg>
+        <span>PLAY</span>
+      </button>
+    </div>
+    <h1 class="reel__mark">
+      <span class="sr">프리투플라이 FREE2FLY — 춘천 컨텐츠제작소</span>
+      <span class="wm wm--giant fit" id="giantMark" aria-hidden="true"><span class="ch">F</span><span class="ch">R</span><span class="ch">E</span><span class="ch">E</span><span class="ch o">2</span><span class="ch">F</span><span class="ch">L</span><span class="ch">Y</span></span>
+    </h1>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement" aria-label="소개">
+  <p class="statement__eyebrow" data-reveal>(About)</p>
+  <h2 class="statement__text" data-reveal>한 장면이 브랜드를 기억하게 만듭니다. 프리투플라이는 춘천에서 <em>기업의 이야기</em>, <em>현장의 열기</em>, <em>인생의 하루</em>를 필름으로 남깁니다.</h2>
+  <div class="statement__facts" data-reveal>
+    <div><b>70<sup>여 편</sup></b><span>지금까지 만든<br>브랜드·현장 영상</span></div>
+    <div><b>8<sup>개 분야</sup></b><span>브랜드 필름에서<br>웨딩·숙소 인트로까지</span></div>
+    <div><b>춘천<sup>기반</sup></b><span>강원에서 출발해<br>요청하신 현장으로</span></div>
+  </div>
+</section>
+
+<!-- SELECTED WORKS -->
+<section class="works" id="works" aria-label="대표 작업" data-view="list">
+  <div class="sec-head">
+    <h2 class="sec-title" data-reveal>Selected<br>Works<sup id="featCount">12</sup></h2>
+    <div class="sec-tools" data-reveal>
+      <div class="toggle" role="tablist" aria-label="보기 방식">
+        <button type="button" class="is-on" data-view="list" role="tab" aria-selected="true">목록</button>
+        <button type="button" data-view="grid" role="tab" aria-selected="false">카드</button>
+        <i class="toggle__pill" aria-hidden="true"></i>
+      </div>
+      <a class="link-arrow" href="#all" data-filter="all">전체 70여 편 보기 <span aria-hidden="true">↘</span></a>
+    </div>
+  </div>
+  <div class="works__legend" aria-hidden="true"><span>No.</span><span>Project</span><span>Client</span><span>분야</span><span></span></div>
+  <ol class="wlist" id="wlist"></ol>
+  <div class="wgrid" id="wgrid" hidden></div>
+</section>
+
+<!-- FLOATING PREVIEW (desktop) -->
+<div class="fprev" id="fprev" aria-hidden="true"><video muted playsinline autoplay loop preload="none"></video><span class="fprev__tag" id="fprevTag"></span></div>
+
+<!-- FIELDS -->
+<section class="fields" id="fields" aria-label="분야">
+  <div class="sec-head">
+    <h2 class="sec-title" data-reveal>Fields<sup>08</sup></h2>
+    <p class="sec-note" data-reveal>무엇을 찍어야 할지부터 함께 정합니다.<br>분야를 눌러 실제 작업을 확인해 보세요.</p>
+  </div>
+  <ul class="flist" id="flist"></ul>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients" aria-label="클라이언트">
+  <div class="sec-head">
+    <h2 class="sec-title sec-title--sm" data-reveal>Clients</h2>
+    <p class="sec-note" data-reveal>기관·협회부터 동네 맛집까지,<br>실제 함께 작업한 곳들입니다.</p>
+  </div>
+  <div class="marquee" id="marquee1"></div>
+  <div class="marquee marquee--rev" id="marquee2"></div>
+</section>
+
+<!-- ALL WORKS -->
+<section class="all" id="all" aria-label="전체 작업">
+  <div class="sec-head">
+    <h2 class="sec-title" data-reveal>Archive<sup id="allCount">69</sup></h2>
+    <p class="sec-note" data-reveal>분야별로 골라 보세요.<br>썸네일을 누르면 바로 재생됩니다.</p>
+  </div>
+  <div class="chips" id="chips" role="tablist" aria-label="분야 필터"></div>
+  <div class="agrid" id="agrid"></div>
+  <div class="all__more"><button class="btn-ghost" id="moreBtn" type="button">더 보기 <span id="moreLeft"></span></button></div>
+</section>
+
+<!-- INQUIRY -->
+<section class="inq" id="contact" aria-label="프로젝트 문의">
+  <div class="sec-head">
+    <h2 class="sec-title" data-reveal>Let’s make<br>your film.</h2>
+    <p class="sec-note" data-reveal>필요한 것만 골라 주세요. 남겨주신 내용을 보고<br><b>24시간 안에 연락드립니다.</b></p>
+  </div>
+  <form class="inq__form" id="inqForm" novalidate>
+    <fieldset class="step" data-reveal>
+      <legend><em>01</em>어떤 영상이 필요하세요? <small>여러 개 골라도 좋아요</small></legend>
+      <div class="step__body"><div class="pcards" id="pcards"></div></div>
+    </fieldset>
+    <fieldset class="step" data-reveal>
+      <legend><em>02</em>예산은 어느 정도 생각하세요?</legend>
+      <div class="step__body opts" data-name="budget">
+        <button type="button" class="opt" aria-pressed="false">200만원 미만</button>
+        <button type="button" class="opt" aria-pressed="false">200–500만원</button>
+        <button type="button" class="opt" aria-pressed="false">500–1,000만원</button>
+        <button type="button" class="opt" aria-pressed="false">1,000만원 이상</button>
+        <button type="button" class="opt" aria-pressed="false">아직 모르겠어요</button>
+      </div>
+    </fieldset>
+    <fieldset class="step" data-reveal>
+      <legend><em>03</em>언제쯤 필요하세요?</legend>
+      <div class="step__body opts" data-name="timing">
+        <button type="button" class="opt" aria-pressed="false">2주 안에</button>
+        <button type="button" class="opt" aria-pressed="false">1개월 안에</button>
+        <button type="button" class="opt" aria-pressed="false">2–3개월 뒤</button>
+        <button type="button" class="opt" aria-pressed="false">날짜 협의</button>
+      </div>
+    </fieldset>
+    <fieldset class="step" data-reveal>
+      <legend><em>04</em>연락받으실 곳</legend>
+      <div class="step__body">
+        <div class="fields-in">
+          <label class="in"><span>이름 · 회사명 <i>*</i></span><input name="name" autocomplete="name" placeholder="홍길동 / 회사명" required></label>
+          <label class="in"><span>연락처 <i>*</i></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required></label>
+          <label class="in in--full"><span>하고 싶은 이야기</span><textarea name="msg" rows="3" placeholder="행사 날짜, 장소, 참고하고 싶은 영상 링크 등 편하게 적어주세요."></textarea></label>
+        </div>
+        <p class="inq__err" id="inqErr" role="alert"></p>
+        <div class="inq__submit">
+          <button class="btn-primary" type="submit"><span>문의 보내기</span><i aria-hidden="true">→</i></button>
+          <p>24시간 안에 연락드립니다<br>남겨주신 정보는 상담에만 사용합니다</p>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <div class="inq__done" id="inqDone" hidden tabindex="-1">
+    <div class="done__mark"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+    <h3>문의가 접수되었습니다.</h3>
+    <div class="done__sum" id="doneSum"></div>
+    <p>24시간 안에 남겨주신 연락처로 연락드립니다.<br>급하시면 카카오톡으로 바로 이야기 나눠요.</p>
+    <div class="done__btns">
+      <a class="btn-kakao" href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>카카오톡으로 바로 상담</a>
+      <a class="btn-ghost" href="tel:01092435425">전화 010-9243-5425</a>
+    </div>
+    <button class="done__again" id="inqAgain" type="button">다시 작성하기</button>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot__cta">
+    <p>새 프로젝트를 준비 중이세요?</p>
+    <a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener" class="foot__big">카카오톡으로 이야기하기 <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="foot__grid">
+    <div><h4>Studio</h4><p>강원도 춘천시 칠전동 9-6, 1층</p></div>
+    <div><h4>Call</h4><p><a href="tel:01092435425">010-9243-5425</a></p></div>
+    <div><h4>Mail</h4><p><a href="mailto:free2fly.team@gmail.com">free2fly.team@gmail.com</a></p></div>
+    <div><h4>Follow</h4><p><a href="https://www.instagram.com/free2fly_official" target="_blank" rel="noopener">Instagram ↗</a><br><a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener">KakaoTalk ↗</a></p></div>
+  </div>
+  <div class="foot__mark"><span class="wm fit" id="footMark" aria-hidden="true"><span>FREE</span><span class="o">2</span><span>FLY</span></span></div>
+  <div class="foot__base"><span>© 2026 FREE2FLY 컨텐츠제작소</span><a href="#top">맨 위로 ↑</a></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="영상 재생" hidden>
+  <div class="lb__bg" data-close></div>
+  <div class="lb__box" id="lbBox">
+    <div class="lb__frame" id="lbFrame"></div>
+    <div class="lb__bar">
+      <div class="lb__cap"><b id="lbTitle"></b><span id="lbSub"></span></div>
+      <button class="lb__close" id="lbClose" type="button" aria-label="영상 닫기">닫기 <span aria-hidden="true">✕</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- CURSOR (desktop) -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" class="trk"/><circle cx="50" cy="50" r="48" class="prg" id="cursorRing"/></svg>
+  <span id="cursorLabel">PLAY</span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

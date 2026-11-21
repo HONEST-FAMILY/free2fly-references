@@ -312,8 +312,8 @@
   var flStick = $('.flight__stick');
   var flCopy = $('#flightCopy');
   var vfVideo = $('#vfVideo');
-  var tcEl = $('#tc'), altEl = $('#alt'), altBar = $('#altbar'), tape = $('#tape');
-  var flVisible = false, lastAlt = -1, flTop = 0, flBot = 0, aimIt = 28.5, aimIx = 23;
+  var tcEl = $('#tc'), altEl = $('#alt'), altBar = $('#altbar'), tape = $('#tape'), pinAlt = $('#pinAlt');
+  var flVisible = false, lastAlt = -1, flTop = 0, flBot = 0, flH = 0, aimIt = 28.5, aimIx = 23;
   var tapeLabels = { 0: 'N', 45: 'NE', 90: 'E', 135: 'SE', 180: 'S', 225: 'SW', 270: 'W', 315: 'NW' };
   (function buildTape() {
     var out = '';
@@ -332,25 +332,27 @@
     var p = clamp(-fr.top / Math.max(1, flight.offsetHeight - vh), 0, 1);
     var s = flStick.style;
     var e = easeIO(range(p, 0.04, 0.56));
-    var it0 = mobile() ? 27 : 28.5, ix0 = mobile() ? 6.5 : 23;
+    var it0 = mobile() ? 27.5 : 28.5, ix0 = mobile() ? 3.1 : 23;
     aimIt = it0 * (1 - e); aimIx = ix0 * (1 - e);
     s.setProperty('--it', (it0 * (1 - e)).toFixed(2) + '%');
     s.setProperty('--ib', (it0 * (1 - e)).toFixed(2) + '%');
     s.setProperty('--ix', (ix0 * (1 - e)).toFixed(2) + '%');
     s.setProperty('--ir', (16 * (1 - e)).toFixed(1) + 'px');
     s.setProperty('--fs', (1.18 - 0.18 * e).toFixed(3));
-    var g = range(p, 0.06, 0.5);
-    s.setProperty('--gax', (-easeIO(g) * 50).toFixed(2) + 'vw');
-    s.setProperty('--gbx', (easeIO(g) * 50).toFixed(2) + 'vw');
+    var g = range(p, 0.06, 0.5), lift = it0 * e / 100 * (flH || vh);
+    s.setProperty('--gy', (-lift).toFixed(1) + 'px');
+    s.setProperty('--sy', lift.toFixed(1) + 'px');
     s.setProperty('--go', (1 - easeOut(g)).toFixed(3));
     s.setProperty('--ho', (1 - range(p, 0.44, 0.6)).toFixed(3));
     var co = easeOut(range(p, 0.6, 0.8));
     s.setProperty('--co', co.toFixed(3));
     flCopy.classList.toggle('is-live', co > 0.5);
-    var alt = Math.round(150 * easeOut(range(p, 0, 0.56)));
+    var climb = easeOut(range(p, 0, 0.56)), alt = Math.round(150 * climb);
+    s.setProperty('--alt', climb.toFixed(4));
     if (alt !== lastAlt) {
       lastAlt = alt;
       altEl.textContent = alt;
+      pinAlt.textContent = alt;
       altBar.style.height = (alt / 150 * 100).toFixed(1) + '%';
     }
     var heading = 318 + p * 96;
@@ -400,6 +402,7 @@
       '<img src="media/thumbs/' + esc(w.id) + '.jpg" alt="" loading="lazy" decoding="async" width="640" height="360">' +
       '<span class="card__tag">' + cat + '</span>' +
       (w.pv ? '<span class="card__live"><b></b>PREVIEW</span>' : '') +
+      '<span class="card__fr" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="card__prog" aria-hidden="true"><i></i></span>' +
       '<span class="card__playbtn" aria-hidden="true"></span></a>' +
       '<div class="card__meta"><span class="card__no"><span class="m">' + pad2(i + 1) + '</span></span>' +
       '<div><h3><span class="m">' + esc(w.title) + '</span></h3><p><span class="m">' + esc(w.client) + '</span></p></div>' +
@@ -603,6 +606,16 @@
     if (v) v.pause();
   }
   function stopAllPreviews() { Array.from(playing).forEach(stopPreview); }
+  function previewFrame() {
+    if (!playing.size) return;
+    playing.forEach(function (card) {
+      if (!card.classList.contains('is-playing')) return;
+      var v = card._pv || (card._pv = $('video', card));
+      if (!v || !v.duration) return;
+      var pb = card._pb || (card._pb = $('.card__prog', card));
+      if (pb) pb.style.setProperty('--pp', (v.currentTime / v.duration).toFixed(4));
+    });
+  }
 
   var centerIO = null;
   if (FINE) {
@@ -637,9 +650,9 @@
 
   /* custom cursor (desktop grid) + list peek (desktop list) */
   var cursor = $('#cursor'), cDot = $('.cursor__dot', cursor), cFollow = $('.cursor__f', cursor);
-  var peek = $('#peek'), peekIn = $('.list-peek__in', peek);
+  var peek = $('#peek'), peekIn = $('.list-peek__in', peek), peekNo = $('#peekNo'), peekFr = $('.list-peek__fr', peek);
   var CUR = FINE && !RM;
-  var mx = -300, my = -300, cx = -300, cy = -300, px = -300, py = -300, peekOn = false, peekId = '', peekRot = 0, peekVis = 0, pointerIn = false, curState = '';
+  var mx = -300, my = -300, cx = -300, cy = -300, px = -300, py = -300, peekOn = false, peekId = '', peekVis = 0, pointerIn = false, curState = '';
   var MAG_SEL = '.kakao-btn,.btn-more,.btn-send,.btn-kakao', magEl = null, mags = [];
   function cursorState(t) {
     if (!t || !t.closest) return '';
@@ -702,8 +715,14 @@
       var row = view === 'list' && !lbOpen && t.closest && t.closest('#grid .card');
       if (row && !row.classList.contains('is-leaving')) {
         var id = row.getAttribute('data-id');
-        if (id !== peekId) { peekSwap(id, peekOn); peekId = id; }
-        if (!peekOn && peekVis <= 0) { px = mx; py = my; peekRot = 0; }
+        if (id !== peekId) {
+          peekSwap(id, peekOn);
+          peekId = id;
+          var no = $('.card__no .m', row);
+          peekNo.textContent = no ? no.textContent : '';
+          if (peekOn && !RM) { peekFr.classList.remove('is-focus'); void peekFr.offsetWidth; peekFr.classList.add('is-focus'); }
+        }
+        if (!peekOn && peekVis <= 0) { px = mx; py = my; }
         peekOn = true;
       } else peekOn = false;
       peek.classList.toggle('is-on', peekOn);
@@ -723,12 +742,10 @@
       cFollow.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
     }
     if (peekOn || peekVis > 0) {
-      var pk = lerpK(0.14, dt), ox = px;
+      var pk = lerpK(0.12, dt);
       px += (mx - px) * pk; py += (my - py) * pk;
-      var vx = (px - ox) / Math.max(dt, 0.008);
-      peekRot = RM ? 0 : peekRot + (clamp(vx * 0.012, -6, 6) - peekRot) * lerpK(0.1, dt);
       peekVis = peekOn ? 1 : Math.max(0, peekVis - dt / 0.5);
-      peek.style.transform = 'translate3d(' + (px + 40).toFixed(1) + 'px,' + py.toFixed(1) + 'px,0) translate(0,-50%) rotate(' + peekRot.toFixed(2) + 'deg)';
+      peek.style.transform = 'translate3d(' + (px + 52).toFixed(1) + 'px,' + py.toFixed(1) + 'px,0) translate(0,-50%)';
     }
   }
   function magFrame(dt) {
@@ -1011,17 +1028,19 @@
   $$('[data-reveal]').forEach(function (el) { revealIO.observe(el); });
 
   /* ---------------------------------------------------------------- 05 chat inquiry */
-  var log = $('#log'), chatInput = $('#chatInput'), stepNow = $('#stepNow'), bar = $('#bar'), chat = $('#chat');
+  var log = $('#log'), chatInput = $('#chatInput'), stepNow = $('#stepNow'), route = $('#route'), routeLis = $$('#route li'), chat = $('#chat');
   var planeStage = $('#planeStage'), contact = $('#contact');
   var answers = {}, chatStarted = false, chatBusy = false;
   var QUESTIONS = [
-    { k: 'cat', label: '분야', q: '안녕하세요, 프리투플라이입니다.<strong>어떤 영상을 생각하고 계세요?</strong>',
+    { k: 'cat', label: '분야', q: '<strong>무엇을 찍을까요?</strong>가장 가까운 분야를 하나 골라주세요.',
       chips: D.cats.map(function (c) { return c.name; }).concat(['아직 잘 모르겠어요']) },
+    { k: 'place', label: '장소', q: '<strong>촬영 장소는 어디인가요?</strong>춘천 밖이어도 괜찮아요.',
+      chips: ['춘천', '강원도 다른 지역', '서울·경기', '그 밖의 지역', '아직 미정이에요'] },
+    { k: 'sky', label: '하늘', q: '<strong>하늘에서도 담을까요?</strong>드론으로 현장 전체를 한 장면에 보여드릴 수 있어요.',
+      chips: ['드론 촬영도 원해요', '지상 촬영만', '추천해 주세요'] },
     { k: 'budget', label: '예산', q: '<strong>예산은 어느 정도로 생각하세요?</strong>대략이어도 괜찮아요. 맞춰서 제안드릴게요.',
       chips: ['100만 원 미만', '100–300만 원', '300–500만 원', '500만 원 이상', '상담하고 정할게요'] },
-    { k: 'when', label: '시기', q: '<strong>언제쯤 필요하세요?</strong>',
-      chips: ['2주 안에', '한 달 안에', '두세 달 안에', '아직 미정이에요'] },
-    { k: 'contact', label: '연락처', q: '<strong>마지막으로, 연락받으실 성함과 번호를 남겨주세요.</strong>', form: true }
+    { k: 'contact', label: '연락처', q: '<strong>마지막으로 연락받으실 곳을 남겨주세요.</strong>원하시는 촬영 날짜가 있으면 함께 적어주세요.', form: true }
   ];
 
   function scrollLog() { log.scrollTop = log.scrollHeight; }
@@ -1043,14 +1062,21 @@
     return wait(RM ? 120 : ms).then(function () { t.remove(); });
   }
   function setProgress(answered, current) {
-    bar.style.width = (answered / QUESTIONS.length * 100) + '%';
-    stepNow.textContent = Math.min(current + 1, QUESTIONS.length);
+    var n = QUESTIONS.length, cur = Math.min(current, n - 1);
+    route.style.setProperty('--rp', (cur / (n - 1)).toFixed(3));
+    routeLis.forEach(function (li, j) {
+      li.classList.toggle('is-done', j < answered);
+      li.classList.toggle('is-now', j === cur && answered < n);
+    });
+    stepNow.textContent = answered >= n ? n + '단계 모두 완료' : n + '단계 중 ' + (cur + 1) + '단계';
   }
-  function ask(i) {
+  function ask(i, pre) {
     chatBusy = true;
     setProgress(i, i);
     chatInput.innerHTML = '';
-    return typing(i === 0 ? 700 : 560).then(function () {
+    var t = typing(i === 0 ? 700 : 560);
+    if (pre) t = t.then(function () { addMsg('bot', pre); return typing(480); });
+    return t.then(function () {
       addMsg('bot', QUESTIONS[i].q);
       return wait(RM ? 0 : 160);
     }).then(function () {
@@ -1072,7 +1098,12 @@
       chatInput.innerHTML = '';
       addMsg('me', esc(val));
       setProgress(i + 1, i + 1);
-      ask(i + 1);
+      var pre = '';
+      if (QUESTIONS[i].k === 'cat') {
+        var c = D.cats.filter(function (x) { return x.name === val; })[0];
+        pre = c ? esc(c.name) + ' 작업은 공개된 것만 ' + c.count + '편이에요. 위 작품 목록에서 미리 보실 수 있어요.' : '괜찮아요. 이야기 나누면서 같이 정하면 돼요.';
+      }
+      ask(i + 1, pre);
     };
   }
   function formatTel(v) {
@@ -1093,10 +1124,11 @@
       '<form class="form" id="chatForm" novalidate>' +
       '<div class="field"><input id="fName" name="name" type="text" placeholder=" " autocomplete="name" maxlength="30" required><label for="fName">성함 또는 회사명</label></div>' +
       '<div class="field"><input id="fTel" name="tel" type="tel" inputmode="numeric" placeholder=" " autocomplete="tel" maxlength="13" required><label for="fTel">연락처</label></div>' +
+      '<div class="field field--wide"><input id="fDate" name="date" type="text" placeholder=" " autocomplete="off" maxlength="30"><label for="fDate">희망 촬영 날짜 (선택)</label></div>' +
       '<button class="btn-send" type="submit"><b class="mag-in"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6l-.02 6.53L15 12 3.38 13.87z"/></svg>보내기</b></button>' +
       '<p class="form__note">보내기를 누르면 남겨주신 번호로 직접 연락드려요.</p>' +
       '</form>';
-    var form = $('#chatForm'), fName = $('#fName'), fTel = $('#fTel');
+    var form = $('#chatForm'), fName = $('#fName'), fTel = $('#fTel'), fDate = $('#fDate');
     fTel.addEventListener('input', function () { fTel.value = formatTel(fTel.value); fTel.parentNode.classList.remove('is-err'); });
     fName.addEventListener('input', function () { fName.parentNode.classList.remove('is-err'); });
     if (FINE) setTimeout(function () { fName.focus({ preventScroll: true }); }, 80);
@@ -1108,19 +1140,19 @@
       fTel.parentNode.classList.toggle('is-err', !okTel);
       if (!okName) { fName.focus(); return; }
       if (!okTel) { fTel.focus(); return; }
-      answers.name = name; answers.tel = tel;
+      answers.name = name; answers.tel = tel; answers.date = fDate.value.trim();
       chatInput.innerHTML = '';
-      addMsg('me', esc(name) + ' · ' + esc(tel));
-      setProgress(4, 3);
+      addMsg('me', esc(name) + ' · ' + esc(tel) + (answers.date ? ' · ' + esc(answers.date) : ''));
+      setProgress(QUESTIONS.length, QUESTIONS.length - 1);
       chatBusy = true;
       flyPlane().then(finish);
     });
   }
   function finish() {
     return typing(520).then(function () {
-      addMsg('bot', '<strong>곧 연락드릴게요</strong>' + esc(answers.name) + '님, 보내주신 내용을 확인하고 남겨주신 번호로 연락드리겠습니다. 급하시면 카카오톡으로 바로 이어서 이야기 나눠요.');
+      addMsg('bot', '<strong>곧 연락드릴게요</strong>' + esc(answers.name) + '님, 보내주신 계획서를 확인하고 남겨주신 번호로 연락드리겠습니다. 급하시면 카카오톡으로 바로 이어서 이야기 나눠요.');
       chatInput.innerHTML = '<div class="done"><a class="btn-kakao" href="' + KAKAO + '" target="_blank" rel="noopener"><b class="mag-in">' + KAKAO_SVG + '카카오톡으로 바로 이어서</b></a>' +
-        '<button type="button" class="btn-ghost" id="restart">처음부터 다시</button></div>';
+        '<button type="button" class="btn-ghost" id="restart">다시 고르기</button></div>';
       chat.classList.add('is-done');
       $('#restart').addEventListener('click', restartChat);
       chatBusy = false;
@@ -1144,8 +1176,9 @@
     var sheet = document.createElement('div');
     sheet.className = 'sheet';
     sheet.style.left = x0 + 'px'; sheet.style.top = y0 + 'px';
-    sheet.innerHTML = '<h4>영상 제작 문의</h4>' +
-      ['cat', 'budget', 'when'].map(function (k, i) { return '<p><span>' + QUESTIONS[i].label + '</span>' + esc(answers[k]) + '</p>'; }).join('') +
+    sheet.innerHTML = '<h4>촬영 계획서</h4>' +
+      ['cat', 'place', 'sky', 'budget'].map(function (k, i) { return '<p><span>' + QUESTIONS[i].label + '</span>' + esc(answers[k]) + '</p>'; }).join('') +
+      (answers.date ? '<p><span>희망 날짜</span>' + esc(answers.date) + '</p>' : '') +
       '<p><span>성함</span>' + esc(answers.name) + '</p>' +
       '<span class="logo">FREE<span class="logo__2">2</span>FLY</span>';
     planeStage.appendChild(sheet);
@@ -1308,16 +1341,13 @@
     var cr = contact.getBoundingClientRect();
     contactTopDoc = cr.top + y; contactH = cr.height;
     ftTopDoc = ftMark.getBoundingClientRect().top + y;
+    flH = flStick.offsetHeight;
     docMax = Math.max(0, html.scrollHeight - window.innerHeight);
     measureMq();
     ftLast = -1;
     dirty = true;
   }
   $$('.eyebrow').forEach(function (el) { el.innerHTML = '<span class="eb"><span>' + el.innerHTML + '</span></span>'; });
-  $$('.hd__nav a').forEach(function (a) {
-    var t = esc(a.textContent);
-    a.innerHTML = '<span class="roll"><span>' + t + '</span><span aria-hidden="true">' + t + '</span></span>';
-  });
   [$('.kakao-btn'), moreBtn].forEach(function (b) {
     var w = document.createElement('b');
     w.className = 'mag-in';
@@ -1351,6 +1381,7 @@
     if (gl && toVisible) drawFog(now);
     if (flVisible && !RM) updateTimecode(now);
     pointerFrame(dt);
+    previewFrame();
     aimFrame(dt);
     magFrame(dt);
     marqueeFrame(dt);

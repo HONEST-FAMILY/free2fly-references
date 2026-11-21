@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="css/style.css?v=1247">
+<link rel="stylesheet" href="css/style.css?v=1960">
 <link rel="preload" as="image" href="media/hero.jpg">
 </head>
 <body>
@@ -65,8 +65,8 @@
       <h1 class="takeoff__word" aria-label="FREE2FLY"><span><i>F</i></span><span><i>R</i></span><span><i>E</i></span><span><i>E</i></span><span class="o"><i>2</i></span><span><i>F</i></span><span><i>L</i></span><span><i>Y</i></span></h1>
     </div>
     <div class="takeoff__ui">
-      <p class="takeoff__eyebrow"><span>컨텐츠제작소</span><i></i><span>CHUNCHEON, KOREA</span></p>
-      <div class="takeoff__cue" aria-hidden="true"><span>스크롤해서 이륙하기</span><i></i></div>
+      <p class="takeoff__eyebrow"><span>춘천의 컨텐츠제작소</span><span>CHUNCHEON, KOREA</span></p>
+      <div class="takeoff__cue" aria-hidden="true"><span>내리면 안개가 걷힙니다</span><i></i></div>
       <div class="takeoff__end">
         <p class="takeoff__line">춘천에서,<br>하늘에서.</p>
         <p class="takeoff__credit"><b>●</b>강릉 ‘더 강문’ 인트로 中 · 드론 촬영</p>
@@ -78,8 +78,8 @@
 <!-- ============ 02 VIEWFINDER ============ -->
 <section class="flight" id="flight" aria-label="드론 시점">
   <div class="flight__stick">
-    <p class="flight__giant flight__giant--a" aria-hidden="true">더 높이,</p>
-    <p class="flight__giant flight__giant--b" aria-hidden="true">더 넓게.</p>
+    <p class="flight__giant" aria-hidden="true"><span>공간 전체를,</span> <em>한 번에.</em></p>
+    <div class="flight__scale" aria-hidden="true"><div class="flight__ruler"><span>0</span><span>50</span><span>100</span><span>150<small>m</small></span></div><b class="flight__pin"><span id="pinAlt">0</span><small>m</small></b></div>
     <div class="flight__frame">
       <video id="vfVideo" src="media/drone.mp4" poster="media/drone.jpg" muted playsinline autoplay loop preload="metadata" aria-hidden="true"></video>
       <div class="flight__scrim"></div>
@@ -123,7 +123,7 @@
     <div class="grid" id="grid" data-view="grid" role="tabpanel" aria-live="polite"></div>
     <div class="works__more" id="more" hidden><button type="button" class="btn-more" id="moreBtn">더 보기 <span id="moreN"></span></button></div>
   </div>
-  <div class="list-peek" id="peek" aria-hidden="true"><div class="list-peek__in"><img alt=""></div></div>
+  <div class="list-peek" id="peek" aria-hidden="true"><div class="list-peek__in"><img alt=""></div><div class="list-peek__fr"><i></i><i></i><i></i><i></i><span class="list-peek__rec"><b></b>REC</span><span class="list-peek__no" id="peekNo">01</span></div></div>
 </section>
 
 <!-- ============ 04 ABOUT ============ -->
@@ -161,9 +161,9 @@
   <div class="contact__stars" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap contact__grid">
     <div>
-      <p class="eyebrow eyebrow--light" data-reveal>LET'S FLY</p>
+      <p class="eyebrow eyebrow--light" data-reveal>FLIGHT PLAN</p>
       <h2 class="contact__title" id="contactTitle" data-reveal>어떤 장면을<br>날려볼까요?</h2>
-      <p class="contact__lead" data-reveal>네 가지만 골라주세요. 1분이면 충분합니다.<br>남겨주신 내용을 보고 직접 연락드릴게요.</p>
+      <p class="contact__lead" data-reveal>분야와 장소, 하늘에서도 찍을지를 차례로 고르면<br>촬영 계획서 한 장이 만들어집니다. 받아보고 직접 연락드릴게요.</p>
       <ul class="contact__direct" data-reveal>
         <li><span>TEL</span><a href="tel:010-9243-5425">010-9243-5425</a></li>
         <li><span>MAIL</span><a href="mailto:free2fly.team@gmail.com">free2fly.team@gmail.com</a></li>
@@ -172,10 +172,10 @@
     </div>
     <div class="chat" id="chat" data-reveal>
       <div class="chat__top">
-        <div class="chat__who"><span class="chat__avatar" aria-hidden="true">2</span><div><b>프리투플라이</b><small><i></i>직접 읽고 답장드려요</small></div></div>
-        <p class="chat__step" aria-live="polite"><span id="stepNow">1</span> / 4</p>
+        <div class="chat__who"><span class="chat__tile" aria-hidden="true">F<span>2</span>F</span><div><b>프리투플라이 촬영팀</b><small>춘천 스튜디오 · 촬영 문의</small></div></div>
+        <p class="chat__step sr-only" aria-live="polite" id="stepNow">5단계 중 1단계</p>
       </div>
-      <div class="chat__bar" aria-hidden="true"><i id="bar"></i></div>
+      <div class="route" id="route" aria-hidden="true"><ol><li><span>분야</span></li><li><span>장소</span></li><li><span>하늘</span></li><li><span>예산</span></li><li><span>연락처</span></li></ol><b class="route__plane"><svg viewBox="0 0 120 80"><polygon points="2,38 118,4 46,48" fill="#ffffff"/><polygon points="46,48 118,4 58,74" fill="#dbeefa"/><polygon points="46,48 58,74 50,52" fill="#9fd7f7"/></svg></b></div>
       <div class="chat__log" id="log" aria-live="polite"></div>
       <div class="chat__input" id="chatInput"></div>
     </div>
@@ -188,7 +188,6 @@
 <!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div class="wrap">
-    <a href="#top" class="ft__mark" aria-label="FREE2FLY 맨 위로"><span>FREE</span><span class="logo__2">2</span><span>FLY</span></a>
     <div class="ft__grid">
       <div><span>STUDIO</span><p>강원도 춘천시 칠전동 9-6, 1층</p></div>
       <div><span>TEL</span><p><a href="tel:010-9243-5425">010-9243-5425</a></p></div>
@@ -196,6 +195,7 @@
       <div><span>FOLLOW</span><p><a href="https://www.instagram.com/free2fly_official" target="_blank" rel="noopener">Instagram ↗</a> · <a href="http://pf.kakao.com/_txencb/chat" target="_blank" rel="noopener">KakaoTalk ↗</a></p></div>
     </div>
     <div class="ft__bottom"><p>© 2026 FREE2FLY · 컨텐츠제작소 프리투플라이</p><a class="ft__top" href="#top">맨 위로 ↑</a></div>
+    <a href="#top" class="ft__mark" aria-label="FREE2FLY 맨 위로"><span>FREE</span><span class="logo__2">2</span><span>FLY</span></a>
   </div>
 </footer>
 
@@ -212,9 +212,9 @@
   <button class="lb__x" type="button" data-close aria-label="닫기"><i></i><i></i></button>
 </div>
 
-<div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><div class="cursor__f"><b class="cursor__ring"></b><span><i>PLAY</i></span></div></div>
+<div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><div class="cursor__f"><b class="cursor__ring"></b><span><i>재생</i></span></div></div>
 
 <script src="js/works.js"></script>
-<script src="js/main.js?v=1247"></script>
+<script src="js/main.js?v=1960"></script>
 </body>
 </html>
